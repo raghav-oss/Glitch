@@ -10,21 +10,20 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const config = {
-  user: 'sa',
-  password: 'sa@2014',
-  server: 'SERVERSAP',
-  database: 'DukeLiveNew',
+  user: 'Himanshu',
+  password: '130996',
+  server: 'SAP-3-156',
+  database: 'Order_db',
   options: {
     encrypt: false,
-    trustServerCertificate: true, // Accept self-signed certificate
-  },
+    trustServerCertificate: true, 
 };
 
 app.get('/api/fetchSubmittedData', async (req, res) => {
   try {
     await sql.connect(config);
 
-    const result = await sql.query`select * from "@MATRH"`;
+    const result = await sql.query`select * from OrderData`;
 
     const submittedData = result.recordset;
     res.status(200).json({ submittedData })
