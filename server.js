@@ -8,10 +8,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const config = {
-    user: 'sa',
-    password: 'sa@2014',
-    server: 'SERVERSAP',
-    database: 'INV1',
+    user: 'Himanshu',
+    password: '130996',
+    server: 'SAP-3-156',
+    database: 'Project_a',
     options: {
         encrypt: false,
         trustServerCertificate: true, 
@@ -25,7 +25,7 @@ app.post('/login', async (req, res) => {
       const result = await pool.request()
         .input('username', sql.NVarChar, username)
         .input('password', sql.NVarChar, password)
-        .query('SELECT * FROM OrderData WHERE DocEntry = @username AND BaseEntry = @password');
+        .query('SELECT * FROM UserData WHERE UserID = @username AND Password = @password');
   
       if (result.recordset.length > 0) {
         res.json({ success: true });
